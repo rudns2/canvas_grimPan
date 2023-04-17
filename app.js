@@ -1,3 +1,5 @@
+const textInput = document.getElementById("text");
+const fileInput = document.getElementById("file");
 const modeBtn = document.getElementById("mode-btn");
 const destroyBtn = document.getElementById("destroy-btn");
 const eraserBtn = document.getElementById("eraser-btn");
@@ -13,8 +15,7 @@ const CANVAS_HEGHIT = 800;
 canvas.width = CANVAS_WIDTH;
 canvas.height = CANVAS_HEGHIT;
 ctx.lineWidth = lineWidth.value; 
-
-
+ctx.lineCap = "round";
 
 let isPainting = false;
 let isFilling = false;
@@ -71,6 +72,28 @@ function onEraserClick(){
   isFilling = false;
   modeBtn.innerText = "Fill";
 }
+function onFileChange(event){
+  const file = event.target.files[0];
+  const url = URL.createObjectURL(file);
+  const image = new Image();
+  image.src = url;
+  image.onload = function () {
+    ctx.drawImage(image, 0,0,CANVAS_WIDTH, CANVAS_HEGHIT);
+    fileInput.value = null;
+  }
+}
+function onDoubleClick(event){
+  const text = textInput.value;
+  if(text !== ""){
+    ctx.save();
+    ctx.lineWidth = 1;
+    ctx.font = "68px serif"
+    ctx.strokeText(text, event.offsetX, event.offsetY);
+    ctx.fillText(text, event.offsetX, event.offsetY);
+    ctx.restore();
+  }  
+}
+canvas.addEventListener("dblclick", onDoubleClick);
 canvas.addEventListener("mousedown", startPainting);
 canvas.addEventListener("mousemove", onMove);
 canvas.addEventListener("mouseup", cancelPainting);
@@ -94,6 +117,10 @@ destroyBtn.addEventListener("click", onDestroyClick);
 
 eraserBtn.addEventListener("click", onEraserClick)
 //stroke의 색을 하얀색으로 바꿔준다.
+
+file.addEventListener("change", onFileChange);
+//파일을 넣는 이벤트 와 함수
+
 
 //컬러s 배열 선언 후 마우스 클릭 할때 마다 선색이 랜덤으로 변하는 함수
 // const colors = [
