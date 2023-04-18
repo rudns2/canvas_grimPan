@@ -6,7 +6,7 @@ const destroyBtn = document.getElementById("destroy-btn");
 const eraserBtn = document.getElementById("eraser-btn");
 const colorOptions =  Array.from(document.getElementsByClassName("color-option"));
 const canvas = document.querySelector("canvas");
-const color = document.getElementById("input-color"); 
+const color = document.getElementById("color"); 
 const lineWidth = document.getElementById("line-width");
 const ctx = canvas.getContext("2d");
 

@@ -9,6 +9,7 @@
 </head>
 <body>
     <div class="color-options">
+        <input type="color" id="color">
         <div class="color-option" style="background-color:#1abc9c;" data-color="#1abc9c"></div> 
         <div class="color-option" style="background-color:#3498db;" data-color="#3498db"></div>
         <div class="color-option" style="background-color:#34495e;" data-color="#34495e"></div>
@@ -23,14 +24,17 @@
     </div>
     <canvas></canvas>
     <div class="btns">
+        <span>Pencil Width</span>
         <input id="line-width" type="range" min="1" max="10" value="5">
-        <input type="color" id="input-color">
-        <input type="text" placeholder="Write and then double click" id="text">
-        <button id="mode-btn">Fill</button>
-        <button id="destroy-btn">Destry</button>
-        <button id="eraser-btn">Erase</button>
-        <input type="file" accept="image/*" id="file">
-        <button id="save">save Image</button>
+        <input type="text" placeholder="Add text here... :)" id="text">
+        <button id="mode-btn">🩸 Fill</button>
+        <button id="destroy-btn">💣 Destry</button>
+        <button id="eraser-btn">❌ Erase</button>
+        <label for="file">
+            🖼️ Add Photo
+            <input type="file" accept="image/*" id="file">
+        </label>
+        <button id="save">💾 Save Image</button>
     </div>
     <script src="app.js"></script>
 </body>
