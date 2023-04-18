@@ -1,3 +1,4 @@
+const saveBtn = document.getElementById("save");
 const textInput = document.getElementById("text");
 const fileInput = document.getElementById("file");
 const modeBtn = document.getElementById("mode-btn");
@@ -93,6 +94,13 @@ function onDoubleClick(event){
     ctx.restore();
   }  
 }
+function onSaveClick(){
+  const url = canvas.toDataURL();
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "myDrawing.png";
+  a.click();
+}
 canvas.addEventListener("dblclick", onDoubleClick);
 canvas.addEventListener("mousedown", startPainting);
 canvas.addEventListener("mousemove", onMove);
@@ -119,7 +127,10 @@ eraserBtn.addEventListener("click", onEraserClick)
 //stroke의 색을 하얀색으로 바꿔준다.
 
 file.addEventListener("change", onFileChange);
-//파일을 넣는 이벤트 와 함수
+//파일을 불러와서 바꿔주는 이벤트 와 함수
+
+saveBtn.addEventListener("click", onSaveClick)
+
 
 
 //컬러s 배열 선언 후 마우스 클릭 할때 마다 선색이 랜덤으로 변하는 함수

@@ -1,18 +1,36 @@
+@import 'reset.css';
 canvas {
   width: 800px;
   height: 800px;
-  border: 5px solid black;
   box-sizing: border-box;
+  background-color: white;
+  border-radius: 10px;
 }
 
 body{
   display: flex;
+  padding:20px;
+  gap: 20px;
   justify-content: center;
   align-items: center;
+  background-color: gainsboro;
 } 
-
+.color-options{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
 .color-option{
   width: 50px;
   height: 50px;
+  border-radius: 50%;
   cursor: pointer;
+  transition:transform ease-in-out .3s;
+}
+.color-option:hover{
+  transform: scale(1.2);
+}
+.btns{
+  display: flex;
+  flex-direction: column;
 }
